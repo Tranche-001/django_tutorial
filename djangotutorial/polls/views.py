@@ -1,27 +1,12 @@
-from django.shortcuts import render
-
-# Create your views here.
-from django.http import HttpResponse
-from .models import Question
 from django.shortcuts import get_object_or_404, render
-
-from django.db.models import F
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
-from django.urls import reverse
-
 from .models import Choice, Question
-
-from django.db.models import F
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
-
-from .models import Choice, Question
-
+from django.http import HttpResponse, HttpResponseRedirect
+from django.db.models import F
 from django.utils import timezone
 
+# Create your views here.
 
 class IndexView(generic.ListView):
     template_name = "polls/index.html"
@@ -51,10 +36,6 @@ class ResultsView(generic.DetailView):
     model = Question
     template_name = "polls/results.html"
 
-
-def vote(request, question_id):
-    # same as above, no changes needed.
-    ...
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
